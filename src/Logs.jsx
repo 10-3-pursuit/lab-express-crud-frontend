@@ -16,7 +16,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
         <h1>Logs</h1>
         {logs.map(({ id, captainName, title }) => (
             <div key={id}>
-                <h3>{captainName}</h3>
+                <h3>Captain {captainName}</h3>
                 <p>Title: {title}</p>
                 {/* <p>Post: {log.post}</p>
                 <p>Mistakes were made today: {log.mistakesWereMadeToday.toString()}</p>

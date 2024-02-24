@@ -12,7 +12,7 @@ const LogDetail = ({ toggleDetails }) => {
 if(!logDetail) return null
   return (
     <div>
-      <h3>{logDetail.captainName}</h3>
+      <h3>Captain {logDetail.captainName}</h3>
       <p>Title: {logDetail.title}</p>
       <p>Post: {logDetail.post}</p>
       <p>Mistakes were made today: {logDetail.mistakesWereMadeToday ? "Yes" : "No"}</p>
