@@ -9,6 +9,7 @@ const [log, setLog] = useState({
     daysSinceLastCrisis: 0,
   });
     // toggleForm useState would be here probably so maybe prop needed for Logs.jsx where form will be at instead of app.jsx
+    
   //handle change
 
   //handle submit with prevent default, the options object that contains json.stringify, then the fetch for response, get data with setLog, then reset form

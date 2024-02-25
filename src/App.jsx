@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/logs" element={<Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} />}/>
           <Route path="/logs/:id" element={toggleDetails.show && <Log toggleDetails={toggleDetails}/>}/>
+          {/* maybe add route for form (logs/form) so it can be on different page instead of being on Logs view */}
         </Routes>
         {/* Instead of using Routes, use the next lines to show the selected item on same page */}
         {/* <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} />

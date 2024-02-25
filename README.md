@@ -31,12 +31,12 @@
 
 ### Frontend Setup
 
-- [ ] Copy a basic Vite React template into a new `frontend` folder within the parent directory.
-- [ ] Test the frontend setup to confirm it's working.
-- [ ] Create a component to retrieve data using the backend's GET All route and nest it within `App.jsx`.
-- [ ] Implement state management in `App.jsx` to handle the fetched data.
-- [ ] Use `useEffect` to fetch data from the backend and set the state accordingly.
-- [ ] Ensure the fetched data is displayed on the page.
+- [x] Copy a basic Vite React template into a new `frontend` folder within the parent directory.
+- [x] Test the frontend setup to confirm it's working.
+- [x] Create a component to retrieve data using the backend's GET All route and nest it within `App.jsx`.
+- [x] Implement state management in `App.jsx` to handle the fetched data.
+- [x] Use `useEffect` to fetch data from the backend and set the state accordingly.
+- [x] Ensure the fetched data is displayed on the page.
 
 ### Integrating Create Functionality
 
@@ -49,7 +49,7 @@
 
 - [x] On the backend, create a GET route to return a single item by its `id`.
 - [x] Test the single-item GET route with Postman.
-- [ ] On the frontend, create a Details component to display the fetched item.
+- [x] On the frontend, create a Details component to display the fetched item.
 
 ### Implementing Delete Functionality
 
@@ -59,9 +59,9 @@
 
 ### Additional Features
 
-- [ ] Implement a toggle state in `App.jsx` to control the visibility of the Details component.
-- [ ] Ensure the Details component is displayed conditionally based on the toggle state.
-- [ ] Add functionality to hide and show the form based on a toggle state in `App.jsx`.
+- [x] Implement a toggle state in `App.jsx` to control the visibility of the Details component.
+- [x] Ensure the Details component is displayed conditionally based on the toggle state.
+- [ ] Add functionality to hide and show the form based on a toggle state in `App.jsx`. 
 
 ## Testing
 
