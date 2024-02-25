@@ -1,5 +1,5 @@
 import { useState } from "react";
-// for create fx
+// for create fx using POST
 const LogForm = () => {
 const [log, setLog] = useState({
     captainName: "",
@@ -8,6 +8,10 @@ const [log, setLog] = useState({
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0,
   });
+  //handle change
+
+  //handle submit with prevent default, the options object that contains json.stringify, then the fetch for response, get data, then reset form
+
   return (
     <div>
       <h1>Log Form</h1>

@@ -30,6 +30,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
           <hr />
         </div>
       ))}
+      {/* maybe add form here instead of on app.jsx since it uses same route but with POST instead of GET */}
     </div>
   );
 };
