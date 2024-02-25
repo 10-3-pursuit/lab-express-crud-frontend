@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 
-function Log({ toggleSingleLog }) {
+function Log({ toggleDetails }) {
   const [log, setLog] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:3333/logs/${toggleSingleLog.id}`)
+    fetch(`http://localhost:3333/logs/${toggleDetails.id}`)
       .then(response =>response.json())
       .then(data => {
-        setLog(data.logs);
+        setLog(data); // it is data and not data.logs because the homepage for the react app uses "/logs" instead of just "/""
       })
       .catch(error => console.error('Error fetching log:', error));
-  },[toggleSingleLog.id]); // add toggle single log id in dependency when create useState in app.js[]
+  },[toggleDetails.id]); // add toggle single log id in dependency when create useState in app.js[]
 
-  if (!log) return <div>didn't get log</div>;
+  if (!log) return <div>you selected something but it's not showing up for whatever reason</div>
 
   return (
     <div>
