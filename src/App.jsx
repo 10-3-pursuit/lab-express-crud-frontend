@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Log from './Log';
 import Logs from './Logs';
 import LogForm from './LogForm';
+import "./App.css"
 
 function App() {
   const [logs, setLogs] = useState([]); 
@@ -27,13 +28,14 @@ function App() {
         <Routes>
           <Route path="/logs" element={
             <>
-              <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} />
-              {!toggleForm && <button onClick={() => setToggleForm(true)}>Add Log</button>}
+              <h1>Recently Viewed Log:</h1>
+              <div className='recently-viewed'>{toggleDetails.show && <Log toggleDetails={toggleDetails}/>}</div>
+              <div className='log-form-button'>{!toggleForm && <button onClick={() => setToggleForm(true)}>Add Log</button>}</div>
               {toggleForm && <LogForm setLogs={setLogs} setToggleForm={setToggleForm}/>}
-              {toggleDetails.show && <Log toggleDetails={toggleDetails}/>} 
+              <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} />
               {/* instead of making a /logs/form path, added logForm prop to /logs instead so it can be on same view like specified in checklist (to be able to toggle on and off hidden state like how it's done for Log prop)*/}
             </>
-            }/>
+          }/>
           <Route path="/logs/:id" element={toggleDetails.show && <Log toggleDetails={toggleDetails}/>}/>
         </Routes>
       </main>

@@ -20,7 +20,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
 
   return (
     <div>
-      <h1>Logs</h1>
+      <h1>All Logs</h1>
       {logs.map(({ id, captainName, title, post }) => (
         <div key={id}>
           <h3>{title} - {captainName}</h3>

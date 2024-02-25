@@ -1,0 +1,37 @@
+body, html {
+    font-size: 100%;
+    font-family: monospace;
+    color: white;
+    background-color: black;
+}
+h1, h2 {
+    text-align: center;
+}
+.recently-viewed, form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    background-color: rgba(255, 255, 255, 0.604);
+    color: black;
+    width: fit-content;
+}
+
+form {
+    padding: 1% 1%;
+}
+
+.log-form-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ul, li, p, a {
+    text-decoration: none;
+    list-style-type: none;
+}
