@@ -1,3 +1,75 @@
+# localStorage
+
+These functions collectively get data from server and form input to then display it on client side
+
+## 1. Retrieving and Setting Logs from Local Storage
+
+```jsx
+useEffect(() => {
+  const storedLogs = JSON.parse(localStorage.getItem('logs')) || [];
+  setLogs(storedLogs);
+}, []);
+```
+
+### Purpose
+This function is designed to retrieve the logs stored in the browser's local storage upon the initial render of the application. It ensures that user data is persistent across sessions, enhancing the user experience by providing immediate access to previously entered logs without needing to fetch them from a server.
+
+### How It Works
+- **`useEffect` Hook:** Executes the function inside it after the initial render and not on subsequent re-renders, as indicated by the empty dependency array (`[]`).
+- **Retrieval and Parsing:** The `localStorage.getItem('logs')` retrieves the logs as a JSON string, which `JSON.parse()` then converts into a JavaScript array.
+- **Setting State:** The `setLogs` function updates the `logs` state with the retrieved array. If no logs are stored, an empty array is set as the default state.
+
+### Importance
+Ensuring data is immediately available upon application load improves performance and user satisfaction, as it eliminates the need for redundant data fetching and rendering delays.
+
+## 2. Saving Logs to Local Storage
+
+```jsx
+useEffect(() => {
+  localStorage.setItem('logs', JSON.stringify(logs));
+}, [logs]);
+```
+
+### Purpose
+This function automatically saves the current state of logs to the local storage whenever the `logs` state changes. This is crucial for data persistence, ensuring that any additions, deletions, or modifications to the logs are preserved across browser sessions.
+
+### How It Works
+- **`useEffect` Hook with Dependency:** Reacts to any changes in the `logs` state. The function inside `useEffect` runs every time the `logs` state updates.
+- **Serialization and Storage:** Converts the `logs` array into a JSON string using `JSON.stringify()` and stores it in local storage under the key `'logs'`.
+
+### Importance
+Automatically updating local storage with state changes ensures data integrity and persistence without manual intervention, streamlining the user experience.
+
+## 3. Handling Form Submission
+
+```jsx
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(log)
+  };
+  fetch('http://localhost:3333/logs/', options)
+    .then((res) => res.json())
+    .then((data) => setLogs(data.logs))
+    .then(() => {
+      setToggleForm(false)
+    })
+}
+```
+
+### Purpose
+This function handles the submission of new log entries through the `LogForm` component. It sends the log data to a server and updates the application state based on the server's response.
+
+### How It Works
+- **Form Submission Event:** Prevents the default form submission behavior to handle the process programmatically.
+- **Fetch API:** Sends the new log data to the server using a POST request. The log data is serialized into a JSON string and included in the request body.
+- **State Updates:** Upon successful submission and response from the server, the `logs` state is updated with the new log data, and the form is hidden by setting `toggleForm` to false.
+
+### Importance
+This function is integral to the application's interactivity, allowing users to add new logs seamlessly. It connects the frontend to the backend, ensuring that data is consistently synchronized between the user interface and the server.
+
 # Testing App
 
 **Doing a POST request currently won't modify the data in the server**
