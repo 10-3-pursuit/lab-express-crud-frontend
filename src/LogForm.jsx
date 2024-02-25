@@ -1,6 +1,5 @@
 // for create fx using POST
 import { useState } from "react";
-//import { useNavigate } from "react-router-dom";
 
 const LogForm = ({ setLogs, setToggleForm }) => { // bring all logs data from useState setLogs in app.jsx for fetch
 const [log, setLog] = useState({
@@ -10,7 +9,6 @@ const [log, setLog] = useState({
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0,
   });
-//const navigate = useNavigate();
     
   //handle change
   const handleChange = (e) => {
@@ -27,8 +25,10 @@ const [log, setLog] = useState({
     };
     fetch('http://localhost:3333/logs/', options)
     .then((res) => res.json())
-    .then((data)=> setLogs)
-    .then(() => setToggleForm(false))
+    .then((data)=> setLogs(data.logs)) // key is called logs in local storage
+    .then(() => {
+      setToggleForm(false)
+    })
   }
 
   return (

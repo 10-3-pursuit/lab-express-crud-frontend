@@ -12,7 +12,7 @@ function Log({ toggleDetails }) {
       .catch(error => console.error('Error fetching log:', error));
   },[toggleDetails.id]); // add toggle single log id in dependency when create useState in app.js[]
 
-  if (!log) return <div>you selected something but it's not showing up for whatever reason</div>
+  if (!log) return null
 
   return (
     <div>
