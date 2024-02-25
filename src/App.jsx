@@ -8,10 +8,6 @@ function App() {
   const [toggleDetails, setToggleDetails] = useState({ show: false, id: null });
 
   return (
-    <div>
-      <header>
-        <h1>Log Details</h1>
-      </header>
       <main>
         <Routes>
           <Route path="/logs" element={<Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} />}/>
@@ -21,7 +17,6 @@ function App() {
         {/* <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} />
         {toggleDetails.show && <Log toggleDetails={toggleDetails}/>} */}
       </main>
-    </div>
   );
 }
 

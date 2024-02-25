@@ -26,6 +26,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
           <button onClick={() => handleDetailsClick(id)}>
             Details
           </button>
+          {/* divider for tables */}
           <hr />
         </div>
       ))}
