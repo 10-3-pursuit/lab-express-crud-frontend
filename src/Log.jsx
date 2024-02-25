@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 
-function Log({ logId }) {
+function Log({ toggleSingleLog }) {
   const [log, setLog] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/logs/${logId}`)
+    fetch(`http://localhost:3333/logs/${toggleSingleLog.id}`)
       .then(response =>response.json())
       .then(data => {
         setLog(data.logs);
       })
       .catch(error => console.error('Error fetching log:', error));
-  }); // add toggle single log id in dependency when create useState in app.js[]
+  },[toggleSingleLog.id]); // add toggle single log id in dependency when create useState in app.js[]
 
-  if (!log) return null;
+  if (!log) return <div>didn't get log</div>;
 
   return (
     <div>
