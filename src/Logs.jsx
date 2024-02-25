@@ -34,3 +34,4 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
 };
 
 export default Logs;
+// note - new log entries (even cURL ones) render on page although the data is not updated in the server (it is stored in local storage)
