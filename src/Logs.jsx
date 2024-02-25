@@ -19,10 +19,10 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
   };
 
   return (
-    <div>
+    <div className="all-logs">
       <h1>All Logs</h1>
       {logs.map(({ id, captainName, title, post }) => (
-        <div key={id}>
+        <div key={id} className="logs-list">
           <h3>{title} - {captainName}</h3>
           <p>{post}</p>
           <button onClick={() => handleDetailsClick(id)}>

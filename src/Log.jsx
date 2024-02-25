@@ -15,14 +15,14 @@ function Log({ toggleDetails }) {
   if (!log) return null
 
   return (
-    <div>
+    <section className='one-log'>
       <h2>{log.title} - {log.captainName}</h2>
       <ul>
         <li>Post: {log.post}</li>
         <li>Mistakes Were Made Today: {log.mistakesWereMadeToday ? '✅' : '❌'}</li>
         <li>Days Since Last Crisis: {log.daysSinceLastCrisis}</li>
       </ul>
-    </div>
+    </section>
   );
 }
 

@@ -32,7 +32,7 @@ const [log, setLog] = useState({
   }
 
   return (
-    <div>
+    <section>
       <h1>Log Form:</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="captainName">
@@ -86,7 +86,7 @@ const [log, setLog] = useState({
         </label>
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </section>
   );
 }
 
