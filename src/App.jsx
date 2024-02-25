@@ -1,9 +1,18 @@
-import React from 'react'
+import { Routes, Route } from 'react-router-dom';
 
-const App = () => {
+function App() {
   return (
-    <div>App</div>
-  )
+    <div>
+      <header>
+        <h1>Log Details</h1>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/logs"/>
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
