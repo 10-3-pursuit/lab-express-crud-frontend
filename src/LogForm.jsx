@@ -1,5 +1,6 @@
 // for create fx using POST
 import { useState } from "react";
+//import { useNavigate } from "react-router-dom";
 
 const LogForm = ({ setLogs, setToggleForm }) => { // bring all logs data from useState setLogs in app.jsx for fetch
 const [log, setLog] = useState({
@@ -9,8 +10,7 @@ const [log, setLog] = useState({
     mistakesWereMadeToday: false,
     daysSinceLastCrisis: 0,
   });
-  // toggleForm useState would be here probably so maybe prop needed for Logs.jsx where form will be at instead of app.jsx
-  //const [toggleForm, setToggleForm] = useState(false);
+//const navigate = useNavigate();
     
   //handle change
   const handleChange = (e) => {

@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react"; // since useState for form is here now remember to put useState and import LogForm.jsx
 import { useNavigate } from "react-router-dom";
+//import LogForm from "./LogForm";
 
 const Logs = ({ logs, setLogs, setToggleDetails }) => {
+  // const [toggleForm, setToggleForm] = useState(false); // moved form view to this component
   const navigate = useNavigate(); // added this line so when button on click take user to different page to view details
   useEffect(() => {
     fetch("http://localhost:3333/logs/")
@@ -30,7 +32,6 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
           <hr />
         </div>
       ))}
-      {/* maybe add form here instead of on app.jsx since it uses same route but with POST instead of GET */}
     </div>
   );
 };

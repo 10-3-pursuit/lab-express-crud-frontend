@@ -43,7 +43,7 @@
 - [x] On the backend, add a POST route to handle data creation requests.
 - [x] Test the POST route with Postman - also test with cURL
 - [x] On the frontend, create a Form component with controlled inputs for data submission.
-- [] Implement form submission handling to POST data to the backend.
+- [ ] Implement form submission handling to POST data to the backend.
 
 ### Adding Single Item Fetching
 
