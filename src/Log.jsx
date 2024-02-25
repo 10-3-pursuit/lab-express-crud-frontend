@@ -15,7 +15,9 @@ function Log({ toggleDetails }) {
   if (!log) return <div>you selected something but it's not showing up for whatever reason</div>
 
   return (
+    // <>
     <div>
+      <h1>Last Viewed Log</h1>
       <h2>{log.title} - {log.captainName}</h2>
       <ul>
         <li>Post: {log.post}</li>
@@ -23,6 +25,7 @@ function Log({ toggleDetails }) {
         <li>Days Since Last Crisis: {log.daysSinceLastCrisis}</li>
       </ul>
     </div>
+    // </>
   );
 }
 

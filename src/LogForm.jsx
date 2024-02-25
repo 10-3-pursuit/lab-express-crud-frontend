@@ -1,7 +1,7 @@
 // for create fx using POST
 import { useState } from "react";
 
-const LogForm = ({ setLogs }) => { // bring all logs data from useState setLogs in app.jsx for fetch
+const LogForm = ({ setLogs, setToggleForm }) => { // bring all logs data from useState setLogs in app.jsx for fetch
 const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -10,6 +10,7 @@ const [log, setLog] = useState({
     daysSinceLastCrisis: 0,
   });
   // toggleForm useState would be here probably so maybe prop needed for Logs.jsx where form will be at instead of app.jsx
+  //const [toggleForm, setToggleForm] = useState(false);
     
   //handle change
   const handleChange = (e) => {
@@ -27,7 +28,7 @@ const [log, setLog] = useState({
     fetch('http://localhost:3333/logs/', options)
     .then((res) => res.json())
     .then((data)=> setLogs)
-    // add then(() => setToggleForm(false)) once useState is created
+    .then(() => setToggleForm(false))
   }
 
   return (

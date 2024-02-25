@@ -61,9 +61,9 @@
 
 - [x] Implement a toggle state in `App.jsx` to control the visibility of the Details component.
 - [x] Ensure the Details component is displayed conditionally based on the toggle state.
-- [ ] Add functionality to hide and show the form based on a toggle state in `App.jsx`. 
+- [x] Add functionality to hide and show the form based on a toggle state in `App.jsx`. 
 
 ## Testing
 
-- [ ] Thoroughly test the application by running both frontend and backend servers simultaneously.
+- [x] Thoroughly test the application by running both frontend and backend servers simultaneously.
 - [ ] Verify that all functionalities (Create, Read, Delete) work as expected and data is correctly managed between the frontend and backend.
