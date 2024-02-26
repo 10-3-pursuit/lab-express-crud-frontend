@@ -1,44 +1,46 @@
-import { useState }from 'react'
+import { useState, useEffect } from 'react'
 
-const LogForm = ({ setLogs, setToggleForm }) => {
+const LogEdit = ({ setLogs, setToggleForm, setEdit, edit}) => {
+
     const [log, setLog] = useState({
         captainName: "",
         title: "",
         post: "",
         mistakesWereMadeToday: false,
-        daysSinceLastCrisis: null,
+        daysSinceLastCrisis: 0,
     });
 
-    function handleChange(event){
-    setLog({
-        ...log, 
-        [event.target.name]: event.target.value 
-    })
-    }
-
-    function handleSubmit(event){
-        event.preventDefault();
-
-        const options = {
-            method: "POST",
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify(log)
-        }
-
-        fetch("http://localhost:3456/logs", options)
-        .then((res) => res.json())
-        .then((data) => setLogs(data.logs))
-        .then(()=> setToggleForm(false))
-        .then(() => setEdit({ show: false, id: null }))
-    }
-
-    function handleCancel(){
-        setToggleForm(false)
+    function handleChange(event) {
+        setLog({ ...log, [event.target.id]: event.target.value });
       }
+
+      function handleSubmit(){
+        const options = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(log),
+          };
+    
+          fetch(`http://localhost:3456/logs/${edit.id}`, options)
+            .then((res) => res.json())
+            .then((data) => setLogs(data.logs))
+            .then(() => setToggleForm(false))
+            .then(() => setEdit({ show: false, id: null }));
+    }
+    function handleCancel(){
+        setEdit({ show: false, id: null })
+    }
+
+    useEffect(() => {
+        if (edit.show) {
+          fetch(`http://localhost:3456/logs/${edit.id}`)
+            .then((res) => res.json())
+            .then((data) => setLog(data.log));
+        }
+      }, [edit.id]);
 
   return (
     <div>
-        <h1>Log Form</h1>
         <form onSubmit={handleSubmit}>
             <div>
             <label htmlFor="captainName">
@@ -108,7 +110,8 @@ const LogForm = ({ setLogs, setToggleForm }) => {
         Cancel
       </button>
     </div>
+    
   )
 }
 
-export default LogForm
+export default LogEdit
