@@ -24,6 +24,10 @@ function App() {
   }, [logs]);
 
   return (
+    <>
+    <header>
+      <h4>Daily Log Journal</h4>
+    </header>
       <main>
         <Routes>
           <Route path="/logs" element={
@@ -39,6 +43,7 @@ function App() {
           <Route path="/logs/:id" element={toggleDetails.show && <Log toggleDetails={toggleDetails}/>}/>
         </Routes>
       </main>
+    </>
   );
 }
 

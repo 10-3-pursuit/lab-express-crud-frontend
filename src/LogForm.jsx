@@ -33,7 +33,7 @@ const [log, setLog] = useState({
 
   return (
     <section>
-      <h1>Log Form:</h1>
+      <h2>Log Form:</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="captainName">
           Captain Name:
