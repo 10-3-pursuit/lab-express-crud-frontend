@@ -19,7 +19,7 @@ function Log({ toggleDetails }) {
       <h2>{log.title} - {log.captainName}</h2>
       <ul>
         <li>Post: {log.post}</li>
-        <li>Mistakes Were Made Today: {log.mistakesWereMadeToday ? '✅' : '❌'}</li>
+        <li>Mistakes Were Made Today: {log.mistakesWereMadeToday ? '✅' : '🚫'}</li>
         <li>Days Since Last Crisis: {log.daysSinceLastCrisis}</li>
       </ul>
     </section>

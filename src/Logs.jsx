@@ -37,7 +37,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
           {detailsVisibility[id] && (
             <>
               <p>{post}</p>
-              <p>Mistakes Made Today: {mistakesWereMadeToday ? 'Yes' : 'No'}</p>
+              <p>Mistakes Made Today: {mistakesWereMadeToday ? '✅' : '🚫'}</p>
               <p>Days Since Last Crisis: {daysSinceLastCrisis}</p>
             </>
           )}
