@@ -43,6 +43,7 @@ const [log, setLog] = useState({
             id="captainName"
             name="captainName"
             value={log.captainName}
+            required
           />
         </label>
         <label htmlFor="title">
@@ -53,6 +54,7 @@ const [log, setLog] = useState({
             id="title"
             name="title"
             value={log.title}
+            required
           />
         </label>
         <label htmlFor="post">
@@ -62,6 +64,7 @@ const [log, setLog] = useState({
             id="post"
             name="post"
             value={log.post}
+            required
           />
         </label>
         <label htmlFor="mistakesWereMadeToday">
@@ -72,6 +75,7 @@ const [log, setLog] = useState({
             id="mistakesWereMadeToday"
             name="mistakesWereMadeToday"
             checked={log.mistakesWereMadeToday}
+            required
           />
         </label>
         <label htmlFor="daysSinceLastCrisis">
@@ -82,6 +86,7 @@ const [log, setLog] = useState({
             id="daysSinceLastCrisis"
             name="daysSinceLastCrisis"
             value={log.daysSinceLastCrisis}
+            required
           />
         </label>
         <button type="submit">Submit</button>
