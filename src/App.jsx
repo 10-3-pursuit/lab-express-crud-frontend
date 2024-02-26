@@ -4,6 +4,7 @@ import Log from './Log';
 import Logs from './Logs';
 import LogForm from './LogForm';
 import "./App.css"
+import Header from '../Header';
 
 function App() {
   const [logs, setLogs] = useState([]); 
@@ -25,9 +26,7 @@ function App() {
 
   return (
     <>
-    <header>
-      <h4>Daily Log Journal</h4>
-    </header>
+    <Header />
       <main>
         <Routes>
           <Route path="/logs" element={
