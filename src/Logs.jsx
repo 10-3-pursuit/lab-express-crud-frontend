@@ -1,13 +1,17 @@
 import { useEffect } from 'react';
 
-function Logs({ logs, setLogs, setToggleDetails }) {
-  useEffect(() => {
-    fetch("http://localhost:8888/api/logs")
+function Logs({ logs, setLogs, setToggleDetails,edit,setEdit }) {
+  if (logs.length === 0) return null;
+
+  function handleDelete(id) {
+    const options = {
+      method: "DELETE",
+    };
+
+    fetch(`http://localhost:8888/api/logs/${id}`, options)
       .then((res) => res.json())
       .then((data) => setLogs(data.logs));
-  }, []);
-
-  if (logs.length === 0) return null;
+  }
 
   return (
     <div>
@@ -22,6 +26,8 @@ function Logs({ logs, setLogs, setToggleDetails }) {
           <button onClick={() => setToggleDetails({ show: true, id:id })}>
             Details
           </button>
+          <button onClick={()=>setEdit({show:true, id })}>Edit</button>
+          <button onClick={() => handleDelete(id)}>Delete</button>
           <hr />
         </div>
       ))}

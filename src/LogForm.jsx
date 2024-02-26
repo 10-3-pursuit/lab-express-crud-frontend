@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function LogForm({ setLogs, setToggleForm }) {
+function LogForm({ setLogs, setToggleForm, edit, setEdit }) {
   const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -18,19 +18,47 @@ function LogForm({ setLogs, setToggleForm }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(log),
-    };
+    if (edit.show) {
+      const options = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(log),
+      };
 
-    fetch("http://localhost:8888/api/logs", options)
-      .then((res) => res.json())
-      .then((data) => {
-        setLogs(data.logs);
-        setToggleForm(false);
-      });
+      fetch(`http://localhost:8888/api/logs/${edit.id}`, options)
+        .then((res) => res.json())
+        .then((data) => setLogs(data.logs))
+        .then(() => setToggleForm(false))
+        .then(() => setEdit({ show: false, id: null }));
+    }else{
+        const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(log),
+        };
+
+        fetch("http://localhost:8888/api/logs", options)
+        .then((res) => res.json())
+        .then((data) => {
+            setLogs(data.logs);
+            setToggleForm(false);
+        });
+    }
   }
+
+  function handleCancel() {
+    setEdit({ show: false, id: null });
+    setToggleForm(false);
+  }
+  
+
+  useEffect(() => {
+    if (edit.show) {
+      fetch(`http://localhost:8888/api/logs/${edit.id}`)
+        .then((res) => res.json())
+        .then((data) => setLog(data.log));
+    }
+  }, [edit.id]);
 
   return (
     <div>
@@ -88,6 +116,7 @@ function LogForm({ setLogs, setToggleForm }) {
         </label>
         <button type="submit">Submit</button>
       </form>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   );
 }
