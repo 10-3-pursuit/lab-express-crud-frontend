@@ -1,24 +1,29 @@
 body, html {
     font-size: 16px;
-    font-family: monospace;
+    font-family: Courier;
     color: white;
     background-color: black;
 }
 
 h1, h2 {
-    color: yellow;
+    color: rgb(255, 153, 117);
     text-align: center;
     padding: 1% 1% 1% 1%;
+    background-color: rgba(0, 0, 0, 0.21);
+    width: fit-content;
+    margin: auto;
+    border-radius: .5rem;
 }
 h3 {
-    color: rgb(29, 247, 29);
+    color: rgb(29, 247, 138);
 }
 main {
     margin: auto;
     width: fit-content;
-    border: 3px double white;
+    /* border: 3px double white; */
     border-radius: 1rem;
     padding: 1% 1% 1% 1%;
+    background-color: rgba(0, 0, 0, 0.593);
 }
 
 .all-logs {
@@ -30,6 +35,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     text-align: center;
     gap: 1rem;
 }
@@ -48,8 +54,12 @@ main {
     border-radius: 1rem;
 }
 
+.one-log{
+    padding: 1% 1% 1% 1%;
+}
+
 form {
-    padding: 1% 1%;
+    padding: 1% 1% 1% 1%;
 }
 
 .log-form-button {
@@ -62,4 +72,26 @@ form {
 ul, li, p, a {
     text-decoration: none;
     list-style-type: none;
+}
+
+input, textarea {
+    padding: 1%;
+    margin: 0.30rem 0;
+    box-sizing: border-box;
+    border: 0.16rem solid #ccc;
+    border-radius: 0.25rem;
+}
+
+button {
+    background-color: rgb(255, 216, 253);
+    padding: 1% 1% 1% 1%;
+    font-size: 1rem;
+    font-family: Courier;
+    border-radius: 0.5rem;
+}
+button:hover {
+    color: white;
+    font-weight: 900;
+    font-size: 1.5rem;
+    filter:grayscale(100%);
 }
