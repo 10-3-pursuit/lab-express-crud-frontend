@@ -3,13 +3,15 @@ body, html {
     font-family: monospace;
     color: white;
     background: url(https://www.nasa.gov/wp-content/uploads/2024/02/hubble-eso185-ig013-strm2-3-flat.png);
-    background-size: contain;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1%;
 }
 header {
+    margin-top: 1%;
     margin-bottom: 3%;
     padding: 2% 2%;
     border-radius: 1rem;
@@ -103,7 +105,7 @@ form {
 }
 a {
     text-decoration: none;
-    color: rgb(2, 35, 27);
+    color: rgb(2, 34, 35);
 }
 ul, p {
     margin-top: 3%;
@@ -134,9 +136,10 @@ button {
     padding: 1% 1% 1% 1%;
     font-size: 1rem;
     font-family: Courier;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     font-weight: 700;
     margin-bottom: 1%;
+    border: none;
 }
 
 button:hover {

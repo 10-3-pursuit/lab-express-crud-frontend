@@ -4,7 +4,7 @@ import Log from './Log';
 import Logs from './Logs';
 import LogForm from './LogForm';
 import "./App.css"
-import Header from '../Header';
+import Header from './Header';
 
 function App() {
   const [logs, setLogs] = useState([]); 

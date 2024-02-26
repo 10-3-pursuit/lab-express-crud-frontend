@@ -33,7 +33,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
       <h1>All Logs</h1>
       {logs.map(({ id, captainName, title, post, mistakesWereMadeToday, daysSinceLastCrisis }) => (
         <div key={id} className="logs-list">
-          <h3>{title} - by {captainName}</h3>
+          <h3>{title} - by {captainName}:</h3>
           {detailsVisibility[id] && (
             <>
               <p>{post}</p>
