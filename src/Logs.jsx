@@ -21,9 +21,14 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
   return (
     <div className="all-logs">
       <h1>All Logs</h1>
-      {logs.map(({ id, captainName, title, post }) => (
+      {logs.map(({ id, captainName, title, post,mistakesWereMadeToday, daysSinceLastCrisis }) => (
         <div key={id} className="logs-list">
-          <h3>{title} - {captainName}</h3><p>{post}</p>
+          <h3>{title} - by {captainName}</h3>
+          <p>{post}</p>
+          <p>
+            Mistakes Made Today: {mistakesWereMadeToday ? 'Yes' : 'No'}
+          </p>
+          <p>Days Since Last Crisis: {daysSinceLastCrisis}</p>
           <button onClick={() => handleDetailsClick(id)} >
             D E T A I L S
           </button>

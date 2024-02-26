@@ -117,6 +117,7 @@ button {
     font-size: 1rem;
     font-family: Courier;
     border-radius: 0.5rem;
+    font-weight: 700;
 }
 button:hover {
     color: white;
