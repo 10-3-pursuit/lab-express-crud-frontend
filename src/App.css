@@ -50,6 +50,7 @@ main {
     margin: auto;
     padding: 1% 1% 1% 1%;
     border-radius: 1rem;
+    min-width: 40rem;
 }
 
 .all-logs {
