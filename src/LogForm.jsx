@@ -29,9 +29,8 @@ const [log, setLog] = useState({
     fetch('http://localhost:3333/logs/', options)
     .then((res) => res.json())
     .then((data)=> setLogs(data.logs)) // key is called logs in local storage
-    .then(() => {
-      setToggleForm(false)
-    })
+    .then(() => setToggleForm(false))
+    .then(()=>setEdit({ show: false, id: null }));
   }
 
   // handle cancel

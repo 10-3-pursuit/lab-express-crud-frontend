@@ -42,7 +42,8 @@ function App() {
               <div className='recently-viewed'>{toggleDetails.show && <Log toggleDetails={toggleDetails}/>}</div>
 
               <div className='log-form-button'>{!toggleForm && <button onClick={() => setToggleForm(true)}>Add Log</button>}</div>
-              { toggleForm && <LogForm setLogs={setLogs} setToggleForm={setToggleForm}/> }
+              { (edit.show || toggleForm) && <LogForm setLogs={setLogs} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} /> }
+              {/* don't forget to do edit.show to toggle edit button - in parentheses so the whole statement evaluates to true or false - if edit is true then setEdit if false then we need a clear form! */}
 
               <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit} />
               {/* instead of making a /logs/form path, added logForm prop to /logs instead so it can be on same view like specified in checklist (to be able to toggle on and off hidden state like how it's done for Log prop)*/}
