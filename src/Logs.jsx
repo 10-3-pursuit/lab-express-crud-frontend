@@ -11,7 +11,7 @@ const Logs = ({ logs, setLogs }) => {
             method: "DELETE",
         }
 
-        fetch(`http://localhost:3456/api/logs/${id}`, options)
+        fetch(`http://localhost:3456/logs/${id}`, options)
         .then((res) => res.json())
         .then((data) => setLogs(data.logs))
     }

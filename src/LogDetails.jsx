@@ -6,7 +6,7 @@ const LogDetail = () => {
   const [logDetail, setLogDetail] = useState()
 
   useEffect(() => {
-    fetch(`http://localhost:3456/api/logs/${id}`)
+    fetch(`http://localhost:3456/logs/${id}`)
     .then((res) => res.json())
     .then((data) => setLogDetail(data.log))
 }, [id])

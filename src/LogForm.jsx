@@ -27,19 +27,19 @@ const LogForm = ({ setLogs }) => {
             body: JSON.stringify(log)
         }
 
-        fetch("http://localhost:3456/api/logs", options)
+        fetch("http://localhost:3456/logs", options)
         .then((res) => res.json())
         .then((data) => {
             if(data.message) alert("All inputs must be filled.")
             else{
                 setLogs(data.logs)
-                // setLog({
-                //     captainName: "",
-                //     title: "",
-                //     post: "",
-                //     mistakesWereMadeToday: false,
-                //     daysSinceLastCrisis: 0,
-                // })
+                setLog({
+                    captainName: "",
+                    title: "",
+                    post: "",
+                    mistakesWereMadeToday: false,
+                    daysSinceLastCrisis: 0,
+                })
                 navigate('/')
             }
         })

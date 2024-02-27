@@ -10,7 +10,7 @@ const App = () => {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3456/api/logs')
+    fetch('http://localhost:3456/logs')
     .then((res) => res.json())
     .then((data) => setLogs(data.logs))
 }, [])
