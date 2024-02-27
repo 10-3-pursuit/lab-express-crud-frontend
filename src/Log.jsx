@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 
 function Log({ toggleDetails }) {
+  const { id } = useParams();
+  
   const [log, setLog] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:8888/api/logs/${toggleDetails.id}`)
+    fetch(`http://localhost:8888/api/logs/${id}`)
       .then((res) => res.json())
+      // .then((data)=> console.log(data))
       .then((data) => setLog(data.log));
-  }, [toggleDetails.id]);
+  }, [id]);
 
   if (!log) return null;
   return (
@@ -15,9 +19,11 @@ function Log({ toggleDetails }) {
       <h1>{log.captainName}</h1>
       <h3>{log.title}</h3>
       <p>{log.post}</p>
-      {console.log(log)}
       <p>Mistakes were made today: {log.mistakesWereMadeToday ? "true" : "false"}</p>
-      <p>{log.daysSinceLastCrisis}</p>
+      <p>days Since Last Crisis:{log.daysSinceLastCrisis}</p>
+      <Link to = "/">
+        <button>Home</button>
+      </Link>
     </div>
   );
 }

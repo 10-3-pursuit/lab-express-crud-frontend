@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+
+//components
 import Logs from "./Logs";
 import Log from "./Log";
 import LogForm from "./LogForm";
@@ -18,24 +21,54 @@ const App = () => {
   return (
     <div>
       <h1>Logs CRUD</h1>
-      {!toggleForm && 
-      <button onClick={() => setToggleForm(true)}>Create a Log</button> }
-      <Logs
-        logs={logs}
-        setLogs={setLogs}
-        setToggleDetails={setToggleDetails}
-        edit = {edit}
-        setEdit = {setEdit}
-      />
-      {toggleDetails.show && <Log 
-        toggleDetails={toggleDetails} 
-      />}
-      {(edit.show || toggleForm) && <LogForm 
-        setLogs = {setLogs} 
-        setToggleForm = {setToggleForm}
-        edit ={edit}
-        setEdit = {setEdit}
-      />}
+      <Link to ="/new">
+       <button >Create a bookmark</button> 
+      </Link>
+
+      <Routes>
+        {/* show all logs component */}
+        <Route 
+          path="/"
+          element= {
+            <Logs
+              logs={logs}
+              setLogs={setLogs}
+              setToggleDetails={setToggleDetails}
+              edit = {edit}
+              setEdit = {setEdit}
+            />
+          }
+        />
+        {/* details route */}
+        <Route 
+          path="/:id" 
+          element={<Log toggleDetails={toggleDetails} />}
+        />
+        {/* edit route */}
+        <Route 
+          path="/edit/:id" 
+          element = {
+            <LogForm 
+              setLogs = {setLogs} 
+              setToggleForm = {setToggleForm}
+              edit ={edit}
+              setEdit = {setEdit}
+            />
+          }
+        />
+        {/* create new bookmark */}
+        <Route 
+          path="/new"           
+          element = {
+            <LogForm 
+            setLogs = {setLogs} 
+            setToggleForm = {setToggleForm}
+            edit ={edit}
+            setEdit = {setEdit}
+            />
+          } 
+        />
+      </Routes>
     </div>
   );
 };
