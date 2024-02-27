@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Logs = ({ logs, setLogs, setToggleDetails, edit, setEdit }) => { // bring both edit and set edit incase both is needed
+const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both edit and set edit incase both is needed
   const [detailsVisibility, setDetailsVisibility] = useState({}); // added this to give option to hide / show the post
   const navigate = useNavigate(); // to give option to navigate to the post
 
@@ -52,6 +52,7 @@ const Logs = ({ logs, setLogs, setToggleDetails, edit, setEdit }) => { // bring 
             Go To Details
           </button>
           <button onClick={() => deleteLog(id)}>Delete Log</button>
+          <button onClick={()=> setEdit({ show: true, id })}>Edit Log</button>
           <hr />
         </div>
       ))}

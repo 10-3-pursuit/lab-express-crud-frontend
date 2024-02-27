@@ -1,5 +1,5 @@
 // for create fx using POST
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const LogForm = ({ setLogs, setToggleForm, edit, setEdit }) => { // bring all logs data from useState setLogs in app.jsx for fetch
 const [log, setLog] = useState({
@@ -21,6 +21,19 @@ const [log, setLog] = useState({
   //change handle submit so edit form works too (PUT)
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (edit.show) {
+      const options = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(log),
+      };
+      fetch(`http://localhost:3333/logs/${edit.id}`, options)
+        .then((res) => res.json())
+        .then((data) => setLog(data.logs))
+        .then(() => setToggleForm(false))
+        .then(() => setEdit({ show: false, id: null }));
+    } else {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,8 +43,15 @@ const [log, setLog] = useState({
     .then((res) => res.json())
     .then((data)=> setLogs(data.logs)) // key is called logs in local storage
     .then(() => setToggleForm(false))
+    .then(()=> setEdit({ show: false, id: null }));
   }
-  // handle cancel
+};
+
+  // handle cancel - set state for edit & create so it cancels either one no matter which one
+  function handleCancel() {
+    setEdit({ show: false, id: null });
+    setToggleForm(false); // false hides it again
+  }
 
   // for edit (PUT) add useEffect to toggle show / hide editing form (useEffect will run no matter what asynchronously according to dependency so must put if statement)
   useEffect(() => {
@@ -100,6 +120,7 @@ const [log, setLog] = useState({
           />
         </label>
         <button type="submit">Submit</button>
+        <button onClick={handleCancel} className='cancel-btn'>Cancel</button>
       </form>
     </section>
   );
