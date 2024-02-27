@@ -15,10 +15,10 @@ const [log, setLog] = useState({
     setLog({ ...log, [e.target.id]: e.target.value })
   }
 
-  //handle submit with prevent default, the options object that contains json.stringify, then the fetch for response, get data with setLog, then reset form
+  // handle submit with prevent default, the options object that contains json.stringify, then the fetch for response, get data with setLog, then reset form
 
 
-  //change handle submit so edit form works too (PUT)
+  // change handle submit so edit form works too (PUT)
   const handleSubmit = (e) => {
     e.preventDefault();
 
