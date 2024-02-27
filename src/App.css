@@ -108,6 +108,21 @@ form {
     align-items: center;
 }
 
+/* section.landing-functionality {
+    min-width: 50%;
+    min-height: 25%; 
+    font-size: 1.25rem; 
+    text-align: center;
+    flex-direction: column;
+}
+
+.home {
+    position: absolute;
+  } */
+
+/* #button {
+    position: absolute;
+} */
 
 a {
     text-decoration: none;

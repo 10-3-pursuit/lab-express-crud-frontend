@@ -5,6 +5,7 @@ import Logs from './Logs';
 import LogForm from './LogForm';
 import "./App.css"
 import Header from './Header';
+import Landing from './Landing';
 
 function App() {
   const [logs, setLogs] = useState([]); 
@@ -34,9 +35,11 @@ function App() {
   const isVisible = !(edit.show || toggleForm); 
   return (
     <>
-    <Header />
+    {/* Check if the current pathname is not '/', then render the Header */}
+    {location.pathname !== '/' && <Header />}
       <main>
         <Routes>
+          <Route path="/" element={<Landing/>} />
           <Route path="/logs" element={
             <section>
               <h1>Recently Viewed Log:</h1>
