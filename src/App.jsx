@@ -25,10 +25,6 @@ const App = () => {
           <button>Create Bookmark</button>
       </Link>
 
-      {toggleForm && <LogForm setLogs={setLogs} setToggleForm={setToggleForm}/>}
-
-      {edit.show && <LogEdit setLogs={setLogs} setToggleForm={setToggleForm} setEdit={setEdit} edit={edit} />}
-
       <Routes>
         <Route path="/" element={
           <Logs 
@@ -38,6 +34,10 @@ const App = () => {
 
         <Route path="/:id" element={
           <LogDetails />
+        }/>
+
+        <Route path="/edit/:id" element={
+          <LogEdit setLogs={setLogs} />
         }/>
         
 

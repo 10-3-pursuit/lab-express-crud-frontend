@@ -8,7 +8,7 @@ const LogForm = ({ setLogs }) => {
         title: "",
         post: "",
         mistakesWereMadeToday: false,
-        daysSinceLastCrisis: null,
+        daysSinceLastCrisis: 0,
     });
 
     function handleChange(event){

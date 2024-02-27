@@ -1,43 +1,46 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from "react-router-dom";
 
-const LogEdit = ({ setLogs, setToggleForm, setEdit, edit}) => {
+const LogEdit = ({ setLogs }) => {
+    const { id } = useParams();
+    const navigate = useNavigate();
 
     const [log, setLog] = useState({
         captainName: "",
         title: "",
         post: "",
         mistakesWereMadeToday: false,
-        daysSinceLastCrisis: 0,
+        daysSinceLastCrisis: null,
     });
 
     function handleChange(event) {
         setLog({ ...log, [event.target.id]: event.target.value });
       }
 
-      function handleSubmit(){
+      function handleSubmit(event){
+        event.preventDefault()
         const options = {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(log),
           };
     
-          fetch(`http://localhost:3456/api/logs/${edit.id}`, options)
+          fetch(`http://localhost:3456/api/logs/${id}`, options)
             .then((res) => res.json())
             .then((data) => setLogs(data.logs))
-            .then(() => setToggleForm(false))
-            .then(() => setEdit({ show: false, id: null }));
+            .then(() => navigate("/"));
     }
     function handleCancel(){
-        setEdit({ show: false, id: null })
+        navigate("/");
     }
 
     useEffect(() => {
-        if (edit.show) {
-          fetch(`http://localhost:3456/api/logs/${edit.id}`)
+        if (id) {
+          fetch(`http://localhost:3456/api/logs/${id}`)
             .then((res) => res.json())
-            .then((data) => setLog(data.log));
+            .then((data) => setLog(data.log))
         }
-      }, [edit.id]);
+      }, [id]);
 
   return (
     <div>
