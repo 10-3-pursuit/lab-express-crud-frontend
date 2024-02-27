@@ -1,6 +1,8 @@
 import { useState }from 'react'
+import { useNavigate } from "react-router-dom";
 
-const LogForm = ({ setLogs, setToggleForm }) => {
+const LogForm = ({ setLogs }) => {
+    const navigate = useNavigate();
     const [log, setLog] = useState({
         captainName: "",
         title: "",
@@ -25,15 +27,14 @@ const LogForm = ({ setLogs, setToggleForm }) => {
             body: JSON.stringify(log)
         }
 
-        fetch("http://localhost:3456/logs", options)
+        fetch("http://localhost:3456/api/logs", options)
         .then((res) => res.json())
         .then((data) => setLogs(data.logs))
-        .then(()=> setToggleForm(false))
-        .then(() => setEdit({ show: false, id: null }))
+        .then(navigate("/"))
     }
 
     function handleCancel(){
-        setToggleForm(false)
+        navigate("/");
       }
 
   return (

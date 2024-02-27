@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom"
 
 
-
-const Logs = ({ logs, setLogs, setToggleDetails, setEdit, setToggleForm }) => {
+const Logs = ({ logs, setLogs }) => {
 
     if(logs.length === 0) return null
 
@@ -11,12 +11,9 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit, setToggleForm }) => {
             method: "DELETE",
         }
 
-        fetch(`http://localhost:3456/logs/${id}`, options)
+        fetch(`http://localhost:3456/api/logs/${id}`, options)
         .then((res) => res.json())
         .then((data) => setLogs(data.logs))
-        .then(setToggleDetails({ show: false, id: null }))
-        .then(setEdit({ show: false, id: null }))
-        .then(setToggleForm(false))
     }
 
   return (
@@ -29,12 +26,12 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit, setToggleForm }) => {
                 {/* <p>Post: {log.post}</p>
                 <p>Mistakes were made today: {log.mistakesWereMadeToday.toString()}</p>
                 <p>Days since last crisis: {log.daysSinceLastCrisis}</p> */}
-                <button onClick={()=>setToggleDetails({show: true, id })}>
-                Details
-                </button>
-                <button onClick={() => setEdit({ show: true, id })}>
-                    Edit
-                </button>
+                <Link to={`/${id}`}>
+                    <button>Details</button>
+                </Link>
+                <Link to={`/edit/${id}`}>
+                    <button>Edit</button>
+                </Link>
                 <button onClick={() => handleDelete(id)}>
                 Delete
             </button>

@@ -4,7 +4,7 @@ const LogDetail = ({ toggleDetails }) => {
   const [logDetail, setLogDetail] = useState()
 
   useEffect(() => {
-    fetch(`http://localhost:3456/logs/${toggleDetails.id}`)
+    fetch(`http://localhost:3456/api/logs/${toggleDetails.id}`)
     .then((res) => res.json())
     .then((data) => setLogDetail(data.log))
 }, [toggleDetails.id])

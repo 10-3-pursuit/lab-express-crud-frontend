@@ -21,7 +21,7 @@ const LogEdit = ({ setLogs, setToggleForm, setEdit, edit}) => {
             body: JSON.stringify(log),
           };
     
-          fetch(`http://localhost:3456/logs/${edit.id}`, options)
+          fetch(`http://localhost:3456/api/logs/${edit.id}`, options)
             .then((res) => res.json())
             .then((data) => setLogs(data.logs))
             .then(() => setToggleForm(false))
@@ -33,7 +33,7 @@ const LogEdit = ({ setLogs, setToggleForm, setEdit, edit}) => {
 
     useEffect(() => {
         if (edit.show) {
-          fetch(`http://localhost:3456/logs/${edit.id}`)
+          fetch(`http://localhost:3456/api/logs/${edit.id}`)
             .then((res) => res.json())
             .then((data) => setLog(data.log));
         }
