@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 
-const LogDetail = ({ toggleDetails }) => {
+const LogDetail = () => {
+  const { id } = useParams()
   const [logDetail, setLogDetail] = useState()
 
   useEffect(() => {
-    fetch(`http://localhost:3456/api/logs/${toggleDetails.id}`)
+    fetch(`http://localhost:3456/api/logs/${id}`)
     .then((res) => res.json())
     .then((data) => setLogDetail(data.log))
-}, [toggleDetails.id])
+}, [id])
 
 if(!logDetail) return null
   return (
@@ -17,6 +19,7 @@ if(!logDetail) return null
       <p>Post: {logDetail.post}</p>
       <p>Mistakes were made today: {logDetail.mistakesWereMadeToday ? "Yes" : "No"}</p>
       <p>Days since last crisis: {logDetail.daysSinceLastCrisis}</p>
+      <Link to={'/'}>Home</Link>
     </div>
   )
 }

@@ -14,7 +14,7 @@ const LogForm = ({ setLogs }) => {
     function handleChange(event){
     setLog({
         ...log, 
-        [event.target.name]: event.target.value 
+        [event.target.id]: event.target.value 
     })
     }
 
