@@ -1,7 +1,7 @@
 // for create fx using POST
 import { useState } from "react";
 
-const LogForm = ({ setLogs, setToggleForm }) => { // bring all logs data from useState setLogs in app.jsx for fetch
+const LogForm = ({ setLogs, setToggleForm, edit, setEdit }) => { // bring all logs data from useState setLogs in app.jsx for fetch
 const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -30,12 +30,17 @@ const [log, setLog] = useState({
     .then((res) => res.json())
     .then((data)=> setLogs(data.logs)) // key is called logs in local storage
     .then(() => setToggleForm(false))
-    .then(()=>setEdit({ show: false, id: null }));
   }
-
   // handle cancel
 
-  // add useEffect to toggle show / hide editing form
+  // for edit (PUT) add useEffect to toggle show / hide editing form (useEffect will run no matter what asynchronously according to dependency so must put if statement)
+  useEffect(() => {
+    if (edit.show) {
+      fetch(`http://localhost:3333/logs/${edit.id}`)
+      .then((res)=>res.json())
+      .then((data)=> setLog(data));
+    }
+  }, [edit.id]);
 
   return (
     <section>
