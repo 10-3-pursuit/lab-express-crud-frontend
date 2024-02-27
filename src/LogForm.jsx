@@ -2,74 +2,89 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const LogForm = ({ logs, setLogs }) => {
-  // CREATE OBJECT STATE TO HOLD INFO
   const [userInput, setUserInput] = useState({
     captainName: "",
     title: "",
     post: "",
-    mistakesWereMadeToday: "",
-    daysSinceLastCrisis: "",
+    mistakesWereMadeToday: false,
+    daysSinceLastCrisis: 0,
   });
 
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  // This works, however at every refresh it erases the input field
+  // useEffect(() => {
+  //   if (id) {
+  //     const editedIndex = logs.findIndex((log) => log.id === +id);
+  //     if (editedIndex !== -1) {
+  //       setUserInput({ ...logs[editedIndex] });
+  //     }
+  //   }
+  // }, [id]);
 
   useEffect(() => {
     if (id) {
-      const editedIndex = logs.findIndex((log) => log.id === +id);
-      if (editedIndex !== -1) {
-        setUserInput({ ...logs[editedIndex] });
-      }
+      fetch(`http://localhost:3333/api/logs/${id}`)
+        .then((res) => res.json())
+        .then((data) => setUserInput(data[0]));
     }
-  }, [id, logs]);
-
-  // Use params ID
-  // if the ID is true then run the useeffect and set the form to the userInput
-  // create new route so you can grab the id
-
-  const navigate = useNavigate();
+  }, [id]);
 
   function handleChange(event) {
-    // if (event.target.id === "daysSinceLastCrisis") {
-    //   setUserInput({ ...userInput, [event.target.id]: +event.target.value });
-    // } else if (event.target.id === "mistakesWereMadeToday") {
-    //   if (event.target.value === "true") {
-    //     setUserInput({ ...userInput, [event.target.id]: true });
-    //   } else {
-    //     setUserInput({ ...userInput, [event.target.id]: false });
-    //   }
-    // } else {
-    setUserInput({ ...userInput, [event.target.id]: event.target.value });
-    // }
+    if (event.target.id === "daysSinceLastCrisis") {
+      setUserInput({ ...userInput, [event.target.id]: +event.target.value });
+    } else if (event.target.id === "mistakesWereMadeToday") {
+      setUserInput({ ...userInput, [event.target.id]: event.target.checked });
+    } else {
+      setUserInput({ ...userInput, [event.target.id]: event.target.value });
+    }
   }
+
   function handleSubmit(event) {
     event.preventDefault();
-
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userInput),
-    };
-    fetch(`http://localhost:3333/api/logs`, options)
-      .then((res) => res.json())
-      .then((data) => setLogs([...logs, data]));
-
-    setUserInput({
-      captainName: "",
-      title: "",
-      post: "",
-      mistakesWereMadeToday: "",
-      daysSinceLastCrisis: "",
-    });
-    navigate("/logs");
+    if (id) {
+      const options = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userInput),
+      };
+      fetch(`http://localhost:3333/api/logs/${id}`, options)
+        .then((res) => res.json())
+        .then((data) => {
+          setUserInput(data[0]);
+        })
+        .then(() => navigate("/logs"))
+        .catch((error) => console.error("Error:", error));
+    } else {
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userInput),
+      };
+      fetch(`http://localhost:3333/api/logs`, options)
+        .then((res) => res.json())
+        .then((data) => {
+          setLogs([...logs, data]);
+          setUserInput({
+            captainName: "",
+            title: "",
+            post: "",
+            mistakesWereMadeToday: false,
+            daysSinceLastCrisis: 0,
+          });
+        })
+        .then(() => navigate("/logs"))
+        .catch((error) => console.error("Error:", error));
+    }
   }
 
   return (
-    // DONT FORGET TO ADD VALUE
     <div className="text-center">
-      <h1>Create a Log</h1>
+      <h1>{id ? "Edit Log" : "Create Log"}</h1>
       <form onSubmit={handleSubmit} className="w-25 mx-auto">
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
+          <label htmlFor="captainName" className="form-label">
             Name
           </label>
           <input
@@ -100,20 +115,22 @@ const LogForm = ({ logs, setLogs }) => {
             value={userInput.post}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="mistakes">Mistakes Were Made Today</label>
+        <div className="mb-3 form-check">
           <input
-            type="text"
-            className="form-control"
+            type="checkbox"
+            className="form-check-input"
             id="mistakesWereMadeToday"
             onChange={handleChange}
-            value={userInput.mistakesWereMadeToday}
+            checked={userInput.mistakesWereMadeToday}
           />
+          <label className="form-check-label" htmlFor="mistakesWereMadeToday">
+            Mistakes Were Made Today
+          </label>
         </div>
         <div className="mb-3">
-          <label htmlFor="crisis">Days Since Last Crisis</label>
+          <label htmlFor="daysSinceLastCrisis">Days Since Last Crisis</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             id="daysSinceLastCrisis"
             onChange={handleChange}
