@@ -7,7 +7,7 @@ function Log({ toggleDetails }) {
     fetch(`http://localhost:3333/logs/${toggleDetails.id}`)
       .then(response =>response.json())
       .then(data => {
-        setLog(data); // it is data and not data.logs because the homepage for the react app uses "/logs" instead of just "/"
+        setLog(data); // it is data and not data.logs because it's the id object
       })
       .catch(error => console.error('Error fetching log:', error));
   },[toggleDetails.id]); // add toggle single log id in dependency when create useState in app.js[]

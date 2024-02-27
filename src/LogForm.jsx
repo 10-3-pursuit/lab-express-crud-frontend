@@ -16,6 +16,9 @@ const [log, setLog] = useState({
   }
 
   //handle submit with prevent default, the options object that contains json.stringify, then the fetch for response, get data with setLog, then reset form
+
+
+  //change handle submit so edit form works too (PUT)
   const handleSubmit = (e) => {
     e.preventDefault();
     const options = {
@@ -30,6 +33,10 @@ const [log, setLog] = useState({
       setToggleForm(false)
     })
   }
+
+  // handle cancel
+
+  // add useEffect to toggle show / hide editing form
 
   return (
     <section>
@@ -75,7 +82,6 @@ const [log, setLog] = useState({
             id="mistakesWereMadeToday"
             name="mistakesWereMadeToday"
             checked={log.mistakesWereMadeToday}
-            required
           />
         </label>
         <label htmlFor="daysSinceLastCrisis">

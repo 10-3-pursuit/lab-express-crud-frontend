@@ -2,17 +2,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Logs = ({ logs, setLogs, setToggleDetails }) => {
+const Logs = ({ logs, setLogs, setToggleDetails, edit, setEdit }) => {
   const [detailsVisibility, setDetailsVisibility] = useState({}); // added this to give option to hide / show the post
   const navigate = useNavigate(); // to give option to navigate to the post
 
-  useEffect(() => {
-    fetch("http://localhost:3333/logs/")
-      .then((res) => res.json())
-      .then((data) => setLogs(data.logs));
-  }, []);
-
   if (logs.length === 0) return null;
+
+  // HANDLE DELETE GOES HERE
 
   // --- Next 2 fx for hide/show post or navigate to post ---
   const handleDetailsClick = (id) => {
@@ -47,6 +43,7 @@ const Logs = ({ logs, setLogs, setToggleDetails }) => {
           <button onClick={() => navigateToDetails(id)}>
             Go To Details
           </button>
+          <button onClick={() => deleteLog(id)}>Delete Log</button>
           <hr />
         </div>
       ))}
