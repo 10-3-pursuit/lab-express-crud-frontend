@@ -8,9 +8,6 @@ import LogEdit from "./LogEdit";
 
 const App = () => {
   const [logs, setLogs] = useState([]);
-  const [toggleDetails, setToggleDetails] = useState({ show: false, id: null });
-  const [toggleForm, setToggleForm] = useState(false)
-  const [edit, setEdit] = useState({ show: false, id: null })
 
   useEffect(() => {
     fetch('http://localhost:3456/api/logs')
@@ -22,7 +19,7 @@ const App = () => {
     <div>
       <h1>Logs CRUD</h1>
       <Link to="/new">
-          <button>Create Bookmark</button>
+          <button>Create Log</button>
       </Link>
 
       <Routes>

@@ -29,8 +29,21 @@ const LogForm = ({ setLogs }) => {
 
         fetch("http://localhost:3456/api/logs", options)
         .then((res) => res.json())
-        .then((data) => setLogs(data.logs))
-        .then(navigate("/"))
+        .then((data) => {
+            if(data.message) alert("All inputs must be filled.")
+            else{
+                setLogs(data.logs)
+                // setLog({
+                //     captainName: "",
+                //     title: "",
+                //     post: "",
+                //     mistakesWereMadeToday: false,
+                //     daysSinceLastCrisis: 0,
+                // })
+                navigate('/')
+            }
+        })
+        .catch((err) => console.log(err));
     }
 
     function handleCancel(){
