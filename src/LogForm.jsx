@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 
-function LogForm({ setLogs, setToggleForm, edit, setEdit }) {
+function LogForm({ setLogs }) {
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -125,7 +125,7 @@ function LogForm({ setLogs, setToggleForm, edit, setEdit }) {
             value={log.daysSinceLastCrisis}
           />
         </label>
-        <button type="submit">Submit</button>
+        <br /><button type="submit">Submit</button><br />
       </form>
       <button onClick={handleCancel}>Cancel</button>
     </div>

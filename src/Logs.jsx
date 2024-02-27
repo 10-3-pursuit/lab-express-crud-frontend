@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Logs({ logs, setLogs, setToggleDetails,edit,setEdit }) {
+function Logs({ logs, setLogs }) {
   if (logs.length === 0) return null;
 
   function handleDelete(id) {

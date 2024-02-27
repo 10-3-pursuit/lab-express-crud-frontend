@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
-function Log({ toggleDetails }) {
+function Log() {
   const { id } = useParams();
   
   const [log, setLog] = useState();

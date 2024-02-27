@@ -8,9 +8,6 @@ import LogForm from "./LogForm";
 
 const App = () => {
   const [logs, setLogs] = useState([]);
-  const [toggleDetails, setToggleDetails] = useState({ show: false, id: null });
-  const [toggleForm ,setToggleForm] = useState(false);
-  const [edit, setEdit] = useState({ show: false, id:null })
 
   useEffect(() => {
     fetch("http://localhost:8888/api/logs")
@@ -22,7 +19,7 @@ const App = () => {
     <div>
       <h1>Logs CRUD</h1>
       <Link to ="/new">
-       <button >Create a bookmark</button> 
+       <button >Create a log</button> 
       </Link>
 
       <Routes>
@@ -33,16 +30,13 @@ const App = () => {
             <Logs
               logs={logs}
               setLogs={setLogs}
-              setToggleDetails={setToggleDetails}
-              edit = {edit}
-              setEdit = {setEdit}
             />
           }
         />
         {/* details route */}
         <Route 
           path="/:id" 
-          element={<Log toggleDetails={toggleDetails} />}
+          element = {<Log />}
         />
         {/* edit route */}
         <Route 
@@ -50,21 +44,15 @@ const App = () => {
           element = {
             <LogForm 
               setLogs = {setLogs} 
-              setToggleForm = {setToggleForm}
-              edit ={edit}
-              setEdit = {setEdit}
             />
           }
         />
-        {/* create new bookmark */}
+        {/* create new logs */}
         <Route 
           path="/new"           
           element = {
             <LogForm 
             setLogs = {setLogs} 
-            setToggleForm = {setToggleForm}
-            edit ={edit}
-            setEdit = {setEdit}
             />
           } 
         />
