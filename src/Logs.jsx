@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 function Logs({ logs, setLogs, setToggleDetails,edit,setEdit }) {
   if (logs.length === 0) return null;
@@ -23,10 +23,12 @@ function Logs({ logs, setLogs, setToggleDetails,edit,setEdit }) {
           <p>{post}</p>
           <p>Mistakes were made today: {mistakesWereMadeToday ? "true" : "false"}</p>
           <p>{daysSinceLastCrisis}</p>
-          <button onClick={() => setToggleDetails({ show: true, id:id })}>
-            Details
-          </button>
-          <button onClick={()=>setEdit({show:true, id })}>Edit</button>
+          <Link to= {`/${id}`}>
+            <button>Details</button>
+          </Link>
+          <Link to = {`/edit/${id}`}>
+            <button>Edit</button>
+          </Link>
           <button onClick={() => handleDelete(id)}>Delete</button>
           <hr />
         </div>

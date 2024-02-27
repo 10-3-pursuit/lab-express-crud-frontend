@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 
 function LogForm({ setLogs, setToggleForm, edit, setEdit }) {
+
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   const [log, setLog] = useState({
     captainName: "",
     title: "",
@@ -18,18 +23,17 @@ function LogForm({ setLogs, setToggleForm, edit, setEdit }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (edit.show) {
+    if (id) {
       const options = {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(log),
       };
 
-      fetch(`http://localhost:8888/api/logs/${edit.id}`, options)
+      fetch(`http://localhost:8888/api/logs/${id}`, options)
         .then((res) => res.json())
         .then((data) => setLogs(data.logs))
-        .then(() => setToggleForm(false))
-        .then(() => setEdit({ show: false, id: null }));
+        .then(() => navigate("/"));
     }else{
         const options = {
         method: "POST",
@@ -41,24 +45,31 @@ function LogForm({ setLogs, setToggleForm, edit, setEdit }) {
         .then((res) => res.json())
         .then((data) => {
             setLogs(data.logs);
-            setToggleForm(false);
+            navigate("/");
         });
     }
   }
 
   function handleCancel() {
-    setEdit({ show: false, id: null });
-    setToggleForm(false);
+    navigate("/");
   }
   
 
   useEffect(() => {
-    if (edit.show) {
-      fetch(`http://localhost:8888/api/logs/${edit.id}`)
+    if (id) {
+      fetch(`http://localhost:8888/api/logs/${id}`)
         .then((res) => res.json())
         .then((data) => setLog(data.log));
+    }else {
+      setLog({
+        captainName: "",
+        title: "",
+        post: "",
+        mistakesWereMadeToday: false,
+        daysSinceLastCrisis: 0,
+      });
     }
-  }, [edit.id]);
+  }, [id]);
 
   return (
     <div>
