@@ -17,19 +17,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => setLogs(data.logs)); //this contains the array of obj
   }, []);
-  
-  // inputted data is in localstorage so we can retrieve it from local storage to display on page right away instead of waiting to see it displayed in Logs view once page is refreshed
-  useEffect(() => {
-    // JSON.parse() static method parses a JSON string, constructing the JavaScript value or object described by the string.
-    const storedLogs = JSON.parse(localStorage.getItem('logs')) || []; // Storage.getItem(key: string): string | null Returns the current value associated with the given key, or null if the given key does not exist.
-    setLogs(storedLogs);
-  }, []);
-
-  // Save logs to local storage whenever they change
-  useEffect(() => {
-    // JSON.stringify() static method converts a JavaScript value to a JSON string (so localStorage in browser can read it)
-    localStorage.setItem('logs', JSON.stringify(logs)); // Storage.setItem(key: string, value: string): void Sets the value of the pair identified by key to value, creating a new key/value pair if none existed for key previously.
-  }, [logs]);
 
   const isVisible = !(edit.show || toggleForm); 
   return (
