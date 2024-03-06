@@ -9,15 +9,23 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
   if (logs.length === 0) return null;
 
   // HANDLE DELETE GOES HERE
+
   function deleteLog(id) {
     const options = {
       method: "DELETE",
     };
-    
+  
     fetch(`http://localhost:3333/logs/${id}`, options)
       .then((res) => res.json())
-      .then((data) => setLogs(data.logs));
+      .then((data) => {
+        // Filter out the deleted log from the logs state
+        const updatedLogs = logs.filter(log => log.id !== id);
+        // Update the logs state with the filtered logs
+        setLogs(updatedLogs);
+      })
+      .catch(error => console.error('Error deleting log:', error));
   }
+  
 
   // --- Next 2 fx for hide/show post or navigate to post ---
   const handleDetailsClick = (id) => {
