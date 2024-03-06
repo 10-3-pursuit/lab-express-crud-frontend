@@ -8,7 +8,7 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
 
   if (logs.length === 0) return null;
 
-  // HANDLE DELETE GOES HERE
+  // HANDLE DELETE GOES HERE - bug in previous code wouldn't allow subsequent deletions because needed to filter out already deleted logs
 
   function deleteLog(id) {
     const options = {

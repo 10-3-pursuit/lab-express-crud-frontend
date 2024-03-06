@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; // used to navigate (not to create and store endpoints like express.Router)
 import Log from './Log';
 import Logs from './Logs';
 import LogForm from './LogForm';
@@ -54,10 +54,18 @@ function App() {
           <Route path="/logs" element={
             <section>
               <h1>Recently Viewed Log:</h1>
-              <div className='recently-viewed'>{toggleDetails.show && <Log toggleDetails={toggleDetails} setEdit={setEdit}/>}</div>
-              <div className='log-form-button'>{!toggleForm && <button onClick={() => setToggleForm(true)} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>Add Log</button>}</div>
+              <div className='recently-viewed'>{toggleDetails.show && <Log toggleDetails={toggleDetails} setEdit={setEdit}/>}
+              </div>
+
+              <div className='log-form-button'>{!toggleForm && <button onClick={() => setToggleForm(true)} style={{ visibility: isVisible ? 'visible' : 'hidden' }}>Add Log</button>}
+              </div>
+
+              {/* don't forget to do edit.show to toggle edit button - in parentheses so the whole statement evaluates to true or false - if edit is true then setEdit if false then we need a clear form! */}
               { (edit.show || toggleForm) && <LogForm setLogs={setLogs} setToggleForm={setToggleForm} edit={edit} setEdit={setEdit} addLog={addLog} /> }
+
               <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit} deleteLog={deleteLog} />
+              {/* instead of making a /logs/form path, added logForm prop to /logs instead so it can be on same view like specified in checklist (to be able to toggle on and off hidden state like how it's done for Log prop)*/}
+              
             </section>
           }/>
           <Route path="/logs/:id" element={<Log toggleDetails={toggleDetails} setEdit={setEdit} />}/>
