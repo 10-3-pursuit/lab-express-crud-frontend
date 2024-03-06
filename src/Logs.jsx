@@ -13,6 +13,7 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
     const options = {
       method: "DELETE",
     };
+    
     fetch(`http://localhost:3333/logs/${id}`, options)
       .then((res) => res.json())
       .then((data) => setLogs(data.logs));

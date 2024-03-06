@@ -170,3 +170,9 @@ button:hover {
     background: url(https://www.nasa.gov/wp-content/uploads/2024/02/hubble-eso185-ig013-strm2-3-flat.png);
     background-size: cover;
 }
+
+@media only screen and (max-width: 375px){
+    main {
+        min-width: 5 rem;
+    }
+}
