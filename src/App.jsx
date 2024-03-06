@@ -5,6 +5,7 @@ import Logs from './Logs';
 import LogForm from './LogForm';
 import "./App.css"
 import Header from './Header';
+import Home from './Home';
 
 function App() {
   const [logs, setLogs] = useState([]); 
@@ -49,6 +50,7 @@ function App() {
       <Header />
       <main>
         <Routes>
+          <Route path="/" element={<Home/>}/>
           <Route path="/logs" element={
             <section>
               <h1>Recently Viewed Log:</h1>
