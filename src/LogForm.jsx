@@ -19,9 +19,9 @@ const [log, setLog] = useState({
 
 
   // change handle submit so edit form works too (PUT)
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+const handleSubmit = (e) => {
+  e.preventDefault();
 
   if (edit.show) {
     const options = {
