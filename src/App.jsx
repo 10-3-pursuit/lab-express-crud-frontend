@@ -19,6 +19,7 @@ function App() {
       .then((data) => setLogs(data.logs));
   }, []);
 
+  // used to hide add log button when edit form is being shown
   const isVisible = !(edit.show || toggleForm);
 
   useEffect(() => {
@@ -65,7 +66,7 @@ function App() {
 
               <Logs logs={logs} setLogs={setLogs} setToggleDetails={setToggleDetails} edit={edit} setEdit={setEdit} deleteLog={deleteLog} />
               {/* instead of making a /logs/form path, added logForm prop to /logs instead so it can be on same view like specified in checklist (to be able to toggle on and off hidden state like how it's done for Log prop)*/}
-              
+
             </section>
           }/>
           <Route path="/logs/:id" element={<Log toggleDetails={toggleDetails} setEdit={setEdit} />}/>
