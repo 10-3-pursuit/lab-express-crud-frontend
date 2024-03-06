@@ -19,33 +19,41 @@ const [log, setLog] = useState({
 
 
   // change handle submit so edit form works too (PUT)
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (edit.show) {
-      const options = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(log),
-      };
-      fetch(`http://localhost:3333/logs/${edit.id}`, options)
-        .then((res) => res.json())
-        .then((data) => setLog(data.logs))
-        .then(() => setToggleForm(false))
-        .then(() => setEdit({ show: false, id: null }));
-    } else {
+  if (edit.show) {
+    const options = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(log),
+    };
+    fetch(`http://localhost:3333/logs/${edit.id}`, options)
+      .then((res) => res.json())
+      .then((data) => {
+        setLogs(data.logs);
+        setToggleForm(false);
+        setEdit({ show: false, id: null });
+      })
+      .catch(error => console.error('Error updating log:', error));
+  } else {
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(log)
     };
     fetch('http://localhost:3333/logs/', options)
-    .then((res) => res.json())
-    .then((data)=> setLogs(data.logs)) // key is called logs in local storage
-    .then(() => setToggleForm(false))
-    .then(()=> setEdit({ show: false, id: null }));
+      .then((res) => res.json())
+      .then((data) => {
+        setLogs(data.logs);
+        setToggleForm(false);
+        setEdit({ show: false, id: null });
+      })
+      .catch(error => console.error('Error adding log:', error));
   }
 };
+
 
   // handle cancel - set state for edit & create so it cancels either one no matter which one
   function handleCancel() {
