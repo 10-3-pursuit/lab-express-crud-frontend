@@ -109,22 +109,6 @@ form {
     align-items: center;
 }
 
-/* section.landing-functionality {
-    min-width: 50%;
-    min-height: 25%; 
-    font-size: 1.25rem; 
-    text-align: center;
-    flex-direction: column;
-}
-
-.home {
-    position: absolute;
-  } */
-
-/* #button {
-    position: absolute;
-} */
-
 a {
     text-decoration: none;
     color: rgb(2, 34, 35);
@@ -169,11 +153,18 @@ button {
     background-color: rgb(255, 88, 247);
 }
 
+.home-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button:hover {
     color: coral;
     background: url(https://www.nasa.gov/wp-content/uploads/2024/02/hubble-eso185-ig013-strm2-3-flat.png);
     background-size: cover;
 }
+
 
 @media only screen and (max-width: 375px){
     main {
