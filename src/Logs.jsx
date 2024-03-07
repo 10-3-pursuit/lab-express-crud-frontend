@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both edit and set edit incase both is needed
   const [detailsVisibility, setDetailsVisibility] = useState({}); // added this to give option to hide / show the post
   const navigate = useNavigate(); // to give option to navigate to the post
+  
 
   if (logs.length === 0) return null;
 
@@ -18,14 +19,15 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
   fetch(`http://localhost:3333/logs/${id}`, options)
     .then((res) => res.json())
     .then((data) => {
-      // Filter out the deleted log from the logs state
-      const updatedLogs = logs.filter(log => log.id !== id);
-      // Update the logs state with the filtered logs
-      setLogs(updatedLogs);
+      // if (data.logs.length > logs.length) {
+      //   setLogs(logs.filter(log => log.id !== id));
+      // } else {
+      //   setLogs(data.logs);
+      // }
+      setLogs(data.logs);
     })
     .catch(error => console.error('Error deleting log:', error));
 }
-
 
   // --- Next 2 fx for hide/show post or navigate to post ---
   const handleDetailsClick = (id) => {
