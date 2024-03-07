@@ -22,16 +22,6 @@ function App() {
   // used to hide add log button when edit form is being shown
   const isVisible = !(edit.show || toggleForm);
 
-  // useEffect(() => {
-  //   const storedLogs = JSON.parse(localStorage.getItem('logs')) || [];
-  //   setLogs(storedLogs);
-  // }, []);
-  
-  // useEffect(() => {
-  //   localStorage.setItem('logs', JSON.stringify(logs));
-  // }, [logs]);
-
-
   const addLog = (newLog) => {
     setLogs([...logs, newLog]);
   };

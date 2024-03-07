@@ -165,6 +165,10 @@ button {
     display: inline-flex;
 }
 
+.delete-btn {
+    background-color: rgb(255, 88, 247);
+}
+
 button:hover {
     color: coral;
     background: url(https://www.nasa.gov/wp-content/uploads/2024/02/hubble-eso185-ig013-strm2-3-flat.png);

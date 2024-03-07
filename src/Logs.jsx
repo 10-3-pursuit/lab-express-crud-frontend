@@ -19,11 +19,6 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
   fetch(`http://localhost:3333/logs/${id}`, options)
     .then((res) => res.json())
     .then((data) => {
-      // if (data.logs.length > logs.length) {
-      //   setLogs(logs.filter(log => log.id !== id));
-      // } else {
-      //   setLogs(data.logs);
-      // }
       setLogs(data.logs);
     })
     .catch(error => console.error('Error deleting log:', error));
@@ -62,8 +57,12 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
           <button onClick={() => navigateToDetails(id)}>
             Go To Details
           </button>
-          <button onClick={() => deleteLog(id)}>Delete Log</button>
-          <button onClick={()=> setEdit({ show: true, id })}>Edit Log</button>
+          <button onClick={()=> setEdit({ show: true, id })}>
+            Edit Log
+          </button>
+          <button onClick={() => deleteLog(id)} className="delete-btn">
+            Delete Log
+          </button>
           <hr />
         </div>
       ))}
