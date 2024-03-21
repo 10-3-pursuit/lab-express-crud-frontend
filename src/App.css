@@ -1,0 +1,173 @@
+body, html {
+    font-size: 16px;
+    font-family: monospace;
+    color: white;
+    background: url(https://www.nasa.gov/wp-content/uploads/2024/02/hubble-eso185-ig013-strm2-3-flat.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+header {
+    margin-top: 1%;
+    margin-bottom: 3%;
+    padding: 2% 2%;
+    border-radius: 1rem;
+}
+
+h1, h2 {
+    color: rgb(29, 247, 196);
+    margin-bottom: 3%;
+    margin-top: 1.5%;
+    padding: 1% 1% 1% 1%;
+    background-color: rgba(0, 0, 0, 0.593);
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+}
+
+h3 {
+    color: rgb(181, 139, 255);
+    background-color: rgba(0, 0, 0, 0.593);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: .5rem;
+    padding: 1% 1% 1% 1%;
+}
+
+h4 {
+    font-size: 4rem;
+    text-align: center;
+    font-family: Courier;
+    font-weight: 900;
+}
+main {
+    margin: auto;
+    padding: 1% 1% 1% 1%;
+    border-radius: 1rem;
+    min-width: 40rem;
+}
+
+.all-logs {
+    margin: 3% 3% 3% 10%;
+    padding: 1% 1% 1% 1%;
+    overflow-y: auto;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.663);
+    width: 80%
+}
+
+.logs-list {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: .15rem;
+}
+
+.recently-viewed, form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.663);
+    color: white;
+    width: fit-content;
+    border-radius: 1rem;
+}
+
+.one-log{
+    padding: 1% 1% 1% 1%;
+    margin: 1% 1% 1% 1%;
+}
+
+form {
+    padding: 1% 1% 1% 1%;
+    color: aqua;
+}
+
+.log-form-button {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(2, 34, 35);
+}
+ul, p {
+    margin-top: 3%;
+    text-decoration: none;
+    list-style-type: none;
+    background-color: rgba(0, 0, 0, 0.593);
+    padding: 3%;
+    border-radius: 1rem;
+    color: yellow;
+}
+
+ul {
+    text-align: center;
+
+}
+
+input, textarea {
+    padding: 1%;
+    margin: 0.30rem 0;
+    box-sizing: border-box;
+    border: 0.16rem solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+}
+
+button {
+    background-color: rgb(255, 216, 253);
+    padding: 1% 1% 1% 1%;
+    font-size: 1rem;
+    font-family: Courier;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    margin-bottom: 1%;
+    border: none;
+    display: inline-flex;
+}
+
+.delete-btn {
+    background-color: rgb(255, 88, 247);
+}
+
+.home-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    color: coral;
+    background: url(https://www.nasa.gov/wp-content/uploads/2024/02/hubble-eso185-ig013-strm2-3-flat.png);
+    background-size: cover;
+}
+
+
+@media only screen and (max-width: 375px){
+    main {
+        min-width: 5 rem;
+    }
+}
