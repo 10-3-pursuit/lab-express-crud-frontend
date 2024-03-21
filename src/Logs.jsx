@@ -38,10 +38,12 @@ const Logs = ({ logs, setLogs, setToggleDetails, setEdit }) => { // bring both e
     navigate(`/logs/${id}`);
   };
 
+  const reversedLogs = [...logs].reverse();
+
   return (
     <div className="all-logs">
       <h1>All Logs</h1>
-      {logs.map(({ id, captainName, title, post, mistakesWereMadeToday, daysSinceLastCrisis }) => (
+      {reversedLogs.map(({ id, captainName, title, post, mistakesWereMadeToday, daysSinceLastCrisis }) => (
         <div key={id} className="logs-list">
           <h3>{title} - by {captainName}:</h3>
           {detailsVisibility[id] && (
